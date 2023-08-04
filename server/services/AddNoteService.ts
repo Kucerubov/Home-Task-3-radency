@@ -1,11 +1,11 @@
 import {Request, Response} from "express";
 import note_repository from "../repositories/note_repository";
 import {handleError, handleSuccess} from "../helpers/handle";
-import {noteSchema} from "../helpers/validator";
+import {isNoteDataValid} from "../helpers/validator";
 
 export default async function AddNoteService(req: Request, res: Response) {
     try {
-        const isValid = noteSchema(req.body);
+        const isValid = isNoteDataValid(req.body);
         if (!isValid) {
             return res.status(400).send({ error: 'Invalid data types' });
         }
