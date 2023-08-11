@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
 
@@ -24,6 +24,8 @@ services:
     depends_on:
       - postgres
     command: ["npm", "run", "dev"]
+    env_file:
+      - ../server/.env
 
 volumes:
   pg_data:

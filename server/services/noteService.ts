@@ -1,7 +1,7 @@
-import {testData} from "../store";
 import note_repository from "../repositories/note_repository";
 import {isIdValid} from "../helpers/validator";
 import {handleError, handleSuccess} from "../helpers/handle";
+import Note from "../models/models";
 
 class NoteService {
     async getNoteById(req: any, res: any) {
@@ -10,7 +10,6 @@ class NoteService {
             if (!isIdValid(id)) {
                 return res.status(400).send({ error: 'Invalid id parameter', data: null });
             }
-
             const data = await note_repository.getNoteById(id);
             await handleSuccess(res, 'Note retrieved successfully', data);
         } catch (error) {
@@ -20,7 +19,7 @@ class NoteService {
 
     async getAllNotes(req: any, res: any) {
         try {
-            await handleSuccess(res, 'Notes retrieved successfully', testData);
+            await handleSuccess(res, 'Notes retrieved successfully', await Note.findAll());
         } catch (error) {
             await handleError(res, error);
         }
