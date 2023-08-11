@@ -6,7 +6,6 @@ export async function handleSuccess<T>(res: any, message: string, data: T) {
         message,
         data
     };
-    console.log(data);
     res.status(200).json(successResponse);
 }
 

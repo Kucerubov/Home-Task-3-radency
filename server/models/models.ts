@@ -12,7 +12,7 @@ const Note = sequelize.define('note', {
         allowNull: false
     },
     created: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING(255),
         allowNull: false
     },
     category: {

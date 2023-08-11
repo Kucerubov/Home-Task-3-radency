@@ -15,7 +15,7 @@ export default async function DeleteNoteService(req: any, res: any) {
         if (!data) {
             return res.status(404).send({ error: 'Note not found'});
         }
-        await handleSuccess(res, 'Note added successfully', data);
+        await handleSuccess(res, 'Note deleted successfully', data);
     } catch (error) {
         await handleError(res, error);
     }
