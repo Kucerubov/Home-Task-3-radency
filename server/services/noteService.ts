@@ -1,12 +1,10 @@
 import {testData} from "../store";
-import { Request, Response } from 'express';
 import note_repository from "../repositories/note_repository";
 import {isIdValid} from "../helpers/validator";
 import {handleError, handleSuccess} from "../helpers/handle";
 
 class NoteService {
-
-    async getNoteById(req: Request, res: Response) {
+    async getNoteById(req, res) {
         try {
             const { id } = req.params;
             if (!isIdValid(id)) {
@@ -20,7 +18,7 @@ class NoteService {
         }
     }
 
-    async getAllNotes(req: Request, res: Response) {
+    async getAllNotes(req, res) {
         try {
             await handleSuccess(res, 'Notes retrieved successfully', testData);
         } catch (error) {
@@ -28,7 +26,7 @@ class NoteService {
         }
     }
 
-    async getStatsNode(req: Request, res: Response) {
+    async getStatsNode(req, res) {
         try {
             const data = await note_repository.getStats();
             await handleSuccess(res, 'Stats retrieved successfully', data);
