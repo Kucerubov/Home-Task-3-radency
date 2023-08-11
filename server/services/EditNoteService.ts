@@ -3,7 +3,7 @@ import {isIdValid, isNoteDataValid} from "../helpers/validator";
 import note_repository from "../repositories/note_repository";
 import {handleError, handleSuccess} from "../helpers/handle";
 
-export default async function EditNoteService(req, res) {
+export default async function EditNoteService(req: any, res: any) {
     try {
         const {id} = req.params;
         const isValid = isNoteDataValid(req.body);

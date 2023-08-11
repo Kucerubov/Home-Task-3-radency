@@ -3,7 +3,7 @@ import {isIdValid} from "../helpers/validator";
 import note_repository from "../repositories/note_repository";
 import {handleError, handleSuccess} from "../helpers/handle";
 
-export default async function DeleteNoteService(req, res) {
+export default async function DeleteNoteService(req: any, res: any) {
     try {
         const {id} = req.params;
         if (!isIdValid(id)) {
