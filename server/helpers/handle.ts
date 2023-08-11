@@ -1,7 +1,6 @@
-import {Response} from "express";
 import {ErrorResponse, SuccessResponse} from "./type";
 
-export async function handleSuccess<T>(res: Response, message: string, data: T) {
+export async function handleSuccess<T>(res, message: string, data: T) {
     const successResponse: SuccessResponse<T> = {
         message,
         data
@@ -9,7 +8,7 @@ export async function handleSuccess<T>(res: Response, message: string, data: T) 
     res.status(200).send(successResponse);
 }
 
-export async function handleError(res: Response, error: any) {
+export async function handleError(res, error: any) {
     console.error(error);
     const errorResponse: ErrorResponse = {
         error: 'Internal server error'

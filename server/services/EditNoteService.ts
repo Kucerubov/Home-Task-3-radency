@@ -1,9 +1,9 @@
-import {Request, Response} from "express";
+
 import {isIdValid, isNoteDataValid} from "../helpers/validator";
 import note_repository from "../repositories/note_repository";
 import {handleError, handleSuccess} from "../helpers/handle";
 
-export default async function EditNoteService(req: Request, res: Response) {
+export default async function EditNoteService(req, res) {
     try {
         const {id} = req.params;
         const isValid = isNoteDataValid(req.body);
